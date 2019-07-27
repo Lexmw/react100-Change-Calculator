@@ -22,10 +22,10 @@ describe('express', function() {
 
   it('should load successfully', () => axios.get(url).then(r => expect(r.status === 200)));
 
-  it('should include an input element for the user to enter amount due', () =>
+  it('should include an input element for the user to enter Amount Due', () =>
     nightmare
     .goto(url)
-    .evaluate(() => document.querySelector('input[name=amountDue]'))
+    .evaluate(() => document.querySelector('input[name=AmountDue]'))
     .end()
     .then((input) => {
       expect(input).to.not.be.null;
@@ -36,7 +36,7 @@ describe('express', function() {
   it('should include an input element for the user to enter amount received', () =>
     nightmare
     .goto(url)
-    .evaluate(() => document.querySelector('input[name=amountReceived]'))
+    .evaluate(() => document.querySelector('input[name=received]'))
     .end()
     .then((input) => {
       expect(input).to.not.be.null;
@@ -58,8 +58,8 @@ describe('express', function() {
   it('should calculate total change correctly', () =>
     nightmare
     .goto(url)
-    .type('input[name=amountDue]', 13.01)
-    .type('input[name=amountReceived]', 20)
+    .type('input[name=AmountDue]', 13.01)
+    .type('input[name=received]', 20)
     .click('button.btn')
     .wait('div.alert.alert-success')
     .evaluate(() => document.querySelector('div.alert.alert-success').innerText)
@@ -70,21 +70,21 @@ describe('express', function() {
   it('should calculate individual change correctly', () =>
     nightmare
     .goto(url)
-    .type('input[name=amountDue]', 13.01)
-    .type('input[name=amountReceived]', 20)
+    .type('input[name=AmountDue]', 13.01)
+    .type('input[name=received]', 20)
     .click('button.btn')
     .wait('div.alert.alert-success')
     .evaluate(() => Array.from(document.querySelectorAll('.change')).map(e => e.innerText))
     .then((results) => {
       const expected = {
-        twenties: '0',
-        tens: '0',
-        fives: '1',
-        ones: '1',
-        quarters: '3',
-        dimes: '2',
-        nickels: '0',
-        pennies: '4'
+        Twenties: '0',
+        Tens: '0',
+        Fives: '1',
+        Ones: '1',
+        Quarters: '3',
+        Dimes: '2',
+        Nickels: '0',
+        Pennies: '4'
       };
 
       const promises = Object
