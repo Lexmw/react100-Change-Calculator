@@ -132,7 +132,6 @@ class App extends Component {
   }
     
   render() {
-    //OH GOD PLEASE REFORMAT THIS CODE IT LOOK SO SHITTY!!!!!!
     return (
       <div className='container'>
       <header><h1><font color="white"><strong>Change Calculator</strong></font></h1></header>
